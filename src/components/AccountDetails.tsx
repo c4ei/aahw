@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Account } from "../interfaces/Account";
 import { ethers } from "ethers";
-import { mumbai } from "../interfaces/Chain";
+import { mumbai,aah } from "../interfaces/Chain";
 import { sendToken } from "../wallet-utils/TransactionUtils";
 
 interface AccountDetailProps {
@@ -21,7 +21,7 @@ const AccountDetails: React.FC<AccountDetailProps> = ({ account }) => {
   });
 
   const fetchData = async () => {
-    const provider = new ethers.providers.JsonRpcProvider(mumbai.rpcUrl);
+    const provider = new ethers.providers.JsonRpcProvider(aah.rpcUrl);
     let accountBalance = await provider.getBalance(account.address);
     setBalance(
       String(formatEthFunc(ethers.utils.formatEther(accountBalance)))
@@ -68,7 +68,7 @@ const AccountDetails: React.FC<AccountDetailProps> = ({ account }) => {
             <p>
               Transfer complete!{" "}
               <a
-                href={`${mumbai.blockExplorerUrl}/tx/${receipt.transactionHash}`}
+                href={`${aah.blockExplorerUrl}/tx/${receipt.transactionHash}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -102,14 +102,14 @@ const AccountDetails: React.FC<AccountDetailProps> = ({ account }) => {
         <h4 className="text-gray-900 font-medium">Address: </h4>
         <a
           target="blank"
-          href={`https://mumbai.polygonscan.com/address/${account.address}`}
+          href={`https://exp.c4ex.net/address/${account.address}`}
           className="text-blue-500 hover:text-blue-600  cursor-pointer"
         >
           {account.address}
         </a>
         <br />
         <span className="text-gray-900 font-medium">Balance: </span>
-        {balance} ETH
+        {balance} AAH
       </div>
 
       <div className="my-2">
@@ -142,7 +142,7 @@ const AccountDetails: React.FC<AccountDetailProps> = ({ account }) => {
         onClick={transfer}
         disabled={!amount || networkResponse.status === "pending"}
       >
-        Send {amount} ETH
+        Send {amount} AAH
       </button>
 
       {networkResponse.status && (

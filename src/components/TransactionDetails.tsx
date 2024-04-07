@@ -13,8 +13,8 @@ interface TransactionTableProps {
   address: string;
 }
 
-const MUMBAI_API_KEY = "<YOUR-API-KEY>";
-const MUMBAI_API_BASE_URL = "https://api-testnet.polygonscan.com/api";
+const MUMBAI_API_KEY = "no";
+const MUMBAI_API_BASE_URL = "https://exp.c4ex.net/api";
 
 const TransactionDetails: React.FC<TransactionTableProps> = ({ address }) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);

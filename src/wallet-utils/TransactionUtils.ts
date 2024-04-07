@@ -1,5 +1,5 @@
 import { ethers, Wallet } from "ethers";
-import { CHAINS_CONFIG, mumbai } from "../interfaces/Chain";
+import { CHAINS_CONFIG, mumbai,aah } from "../interfaces/Chain";
 
 export async function sendToken(
   amount: number,
@@ -7,7 +7,7 @@ export async function sendToken(
   to: string,
   privateKey: string
 ) {
-  const chain = CHAINS_CONFIG[mumbai.chainId];
+  const chain = CHAINS_CONFIG[aah.chainId];
   const provider = new ethers.providers.JsonRpcProvider(chain.rpcUrl);//creating a
   const wallet: Wallet = new ethers.Wallet(privateKey, provider);
 

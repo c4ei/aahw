@@ -36,22 +36,29 @@ const AccountCreate: React.FC = () => {
     setSeedPhrase(account.seedPhrase);
     setAccount(account.account);
   };
- 
+  const [isShowSeeding, setIsEditing] = useState(false);
+  const showSeedHandler = () => {
+    if(isShowSeeding){
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+    }
+  };
 
   return (
     <div className="max-w-md mx-auto bg-white rounded-md shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-4">Pixel Web3 Wallet on Polygon Mumbai</h2>
+      <h2 className="text-2xl font-bold mb-4">Web3 Wallet on All About Helathy</h2>
       <button
         onClick={createAccount}
         className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
       >
-        Create Account
+        Create Account(만들기)
       </button>
       <button
         onClick={showInputFunction}
         className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
       >
-        Recover Account
+        Recover Account(복구하기)
       </button>
       {showInput && (
         <form onSubmit={handleSeedPhraseSubmit} className="flex m-2">
@@ -72,13 +79,23 @@ const AccountCreate: React.FC = () => {
       )}
 
       <div>
-        <p className=" text-gray-900 font-medium">A/C Address: </p>
+        <p className=" text-gray-900 font-medium">AAH Address(주소): </p>
         <span className="text-gray-600 mt-2">{account?.address}</span>
       </div>
+      
+      <button onClick={showSeedHandler}
+      className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+      >Your 12 Phrase Mnemonic(비밀구문 보기/감추기)
+      <br/>아래에 생성된 비밀구문 12개의 단어는 꼭 기억해 두시고 남에게 알려 주시면 안되요 (통장비밀번호)
+      </button>
 
+      {/* {!isShowSeeding && ()} */}
       <div>
-        <p className="text-gray-900  font-medium">Your 12 Phrase Mnemonic: </p>
-        <span className="text-gray-600 text-normal">{seedPhrase}</span>
+        {isShowSeeding && (
+        <span className="text-gray-600 text-normal">
+          {seedPhrase}
+        </span>
+        )}
       </div>
 
       <hr />

@@ -1,0 +1,11 @@
+######################################## - port : 3007
+cd /home/dev/www/aah.c4ex.net
+pm2 node server.js --name "aah.c4ex.net"
+
+
+
+node server.js
+
+
+
+cactus onion panda brave ridge normal assume under huge lend pyramid object

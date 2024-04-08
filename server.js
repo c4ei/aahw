@@ -21,6 +21,6 @@ app.get('*', function (req, resp) {
 });
 
 
-app.listen(3010, function () {
-  console.log('AAH Wallet.c4ex.net listening on 3010')
+app.listen(3007, function () {
+  console.log('AAH Wallet.c4ex.net listening on 3007')
 }); 
